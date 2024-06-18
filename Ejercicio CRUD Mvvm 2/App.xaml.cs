@@ -1,4 +1,6 @@
-﻿namespace Ejercicio_CRUD_Mvvm_2
+﻿using Ejercicio_CRUD_Mvvm_2.Views;
+
+namespace Ejercicio_CRUD_Mvvm_2
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new ProductoMain());
         }
     }
 }

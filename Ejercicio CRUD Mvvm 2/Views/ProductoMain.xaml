@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio_CRUD_Mvvm_2.Views.ProductoMain"
+             xmlns:viewModel="clr-namespace:Ejercicio_CRUD_Mvvm_2.ViewModels"
+             x:DataType="viewModel:ProductoMainViewModels"
+             xmlns:Model="clr-namespace:Ejercicio_CRUD_Mvvm_2.Models"
+             Title="Lista de Productos">
+    <VerticalStackLayout Padding="10,0,10,0">
+        <Button Text="Agregar Producto" HorizontalOptions="Start" Command="{Binding goToaddProductoCommand}"/>
+        <Grid Margin="5,5,5,5" RowDefinitions="auto" ColumnDefinitions="*,*,*,*">
+            <Label Text="Nombre" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="Descripción" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1"/>
+            <Label Text="Ubicación" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="2"/>
+            <Label Text="Proveedor" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="3"/>
+        </Grid>
+        <CollectionView ItemsSource="{Binding ProductoCollection}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="Model:Producto" >
+                    <Grid RowSpacing="0" RowDefinitions="5,Auto,5,1" ColumnDefinitions="*,*,*,*" VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding Nombre}" Grid.Row="1" Grid.Column="0" />
+                        <Label Text="{Binding Descripcion}" Grid.Row="1" Grid.Column="1" />
+                        <Label Text="{Binding Ubicacion}" Grid.Row="1" Grid.Column="2" />
+                        <Label Text="{Binding Proveedor}" Grid.Row="1" Grid.Column="3" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:ProductoMainViewModels}},Path=SelectProductoCommand}" CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

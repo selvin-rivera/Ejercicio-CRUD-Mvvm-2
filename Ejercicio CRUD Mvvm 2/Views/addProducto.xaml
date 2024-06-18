@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio_CRUD_Mvvm_2.Views.addProducto"
+             xmlns:viewModel="clr-namespace:Ejercicio_CRUD_Mvvm_2.ViewModels"
+             x:DataType="viewModel:addProductoViewModels"
+             Title="Agregar Producto">
+    <VerticalStackLayout Padding="30,0,30,0" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+        <Label Text="Nombre Completo"/>
+        <Entry Text="{Binding Nombre}" Keyboard="Text"/>
+
+        <Label Text="Descripción"/>
+        <Entry Text="{Binding Descripcion}" Keyboard="Text"/>
+
+        <Label Text="Ubicación"/>
+        <Entry Text="{Binding Ubicacion}" Keyboard="Text"/>
+
+        <Label Text="Proveedor"/>
+        <Entry Text="{Binding Proveedor}" Keyboard="Text"/>
+
+        <Button Text="Guardad" Command="{Binding AddUpdateCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>
